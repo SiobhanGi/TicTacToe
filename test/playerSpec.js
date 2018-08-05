@@ -16,4 +16,17 @@ describe('Player', () => {
       expect(player.moves).toEqual([]);
     });
   });
+
+  describe('move', () => {
+    it('increments currentMoves by 1 when called', () => {
+      player.move();
+      expect(player.currentMove).toEqual(1);
+    });
+
+    it('pushes position to array', () => {
+      player.move(5);
+      expect(player.moves).toContain(5);
+      expect(player.moves.length).toEqual(1);
+    });
+  });
 });
