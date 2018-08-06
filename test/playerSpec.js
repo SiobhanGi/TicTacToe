@@ -1,6 +1,10 @@
 describe('Player', () => {
+  let player;
+  let playerFactory;
+
   beforeEach(() => {
-    player = new Player();
+    playerFactory = new PlayerFactory();
+    player = playerFactory.build();
   });
 
   describe('Constructor', () => {

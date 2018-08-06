@@ -22,19 +22,20 @@ describe('Game', () => {
       expect(game.moves.length).toEqual(0);
     });
     it('initalises currentTurn as player1', () => {
-      expect(game.currentTurn).toEqual(game.player1)
+      expect(game.currentTurn).toEqual(game.player.one)
     });
   });
 
   describe('switchTurn', () => {
     it('switches currentTurn to player2 when called', () => {
+      game.currentTurn = game.player.one;
       game.switchTurn();
-      expect(game.currentTurn).toEqual(game.player2);
+      expect(game.currentTurn).toEqual(game.player.two);
     });
     it('switches currentTurn to player1 when called', () => {
+      game.currentTurn = game.player.two;
       game.switchTurn();
-      game.switchTurn();
-      expect(game.currentTurn).toEqual(game.player1);
+      expect(game.currentTurn).toEqual(game.player.one);
     });
   });
 
