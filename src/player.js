@@ -1,13 +1,17 @@
 class Player {
   constructor() {
     this.MAX_MOVES = 3;
-    this.currentMove = 0;
-    this.moves = [];
+    this._currentMove = 0;
+    this._moves = [];
   }
 
   move(position) {
-    this.moves.push(position)
-    this.currentMove ++
+    this._moves.push(position)
+    this._currentMove++
+  }
+
+  showMoves() {
+    return this._moves;
   }
 }
 
