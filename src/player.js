@@ -10,3 +10,9 @@ class Player {
     this.currentMove ++
   }
 }
+
+function PlayerFactory() {
+  return {
+    build: () => new Player()
+  };
+}
