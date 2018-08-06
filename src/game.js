@@ -21,9 +21,11 @@ class Game {
     if (this.moves.includes(position)) {
       throw new TypeError(`Move ${position} taken.`)
     } else {
-      console.log(position);
       this.moves.push(position);
       this.currentTurn.move(position);
     }
   }
+
+  
+
 }

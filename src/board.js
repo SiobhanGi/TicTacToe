@@ -1,10 +1,11 @@
 class Board {
   constructor() {
-    this.template =
+    this._template =
       [[1, 2, 3],
       [4, 5, 6],
       [7, 8, 9]];
-    this.winningCombo =
+
+    this._winningCombo =
       [[1, 2, 3],
        [4, 5, 6],
        [7, 8, 9],
@@ -14,6 +15,10 @@ class Board {
        [1, 5, 9],
        [3, 5, 7]]
   };
+
+  checkWinningCombo() {
+    return this._winningCombo;
+  }
 }
 
 function BoardFactory() {
