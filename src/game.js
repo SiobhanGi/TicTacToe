@@ -14,4 +14,13 @@ class Game {
       this.currentTurn = this.player1;
     }
   }
+
+  move(position) {
+    if (this.moves.includes(position)) {
+      throw new TypeError(`Move ${position} taken.`)
+    } else {
+      this.moves.push(position)
+      this.currentTurn.move(position);
+    }
+  }
 }

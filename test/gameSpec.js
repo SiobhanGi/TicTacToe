@@ -37,4 +37,17 @@ describe('Game', () => {
       expect(game.currentTurn).toEqual(game.player1);
     });
   });
+
+  describe('move', () => {
+    it('throws error if move is not valid', () => {
+      game.moves = [5];
+      expect(() => {
+        game.move(5);
+      }).toThrowError(TypeError, `Move ${game.moves} taken.`);
+    });
+    it('adds move to moves array if valid', () => {
+      game.move(5);
+      expect(game.moves.length).toEqual(1);
+    });
+  });
 });
