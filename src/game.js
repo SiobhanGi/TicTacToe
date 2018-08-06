@@ -26,6 +26,14 @@ class Game {
     }
   }
 
-  
+  isWinningMove() {
+    let moves = this.currentTurn.showMoves().sort();
+    let combo = this.board.checkWinningCombo();
+    for (let i = 0; i < combo.length; i++) {
+      if (JSON.stringify(moves) == JSON.stringify(combo[i])) {
+        return true;
+      }
+    }
+  }
 
 }

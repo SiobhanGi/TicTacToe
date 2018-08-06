@@ -7,11 +7,11 @@ describe('Game', () => {
 
   beforeEach(() => {
     playerFactory = new PlayerFactory();
-    player = jasmine.createSpyObj('player', ['move']);
+    player = jasmine.createSpyObj('player', ['move', 'showMoves']);
     spyOn(playerFactory, 'build').and.returnValue(player);
 
     boardFactory = new BoardFactory();
-    board = jasmine.createSpyObj('board', ['winningCombo']);
+    board = jasmine.createSpyObj('board', ['checkWinningCombo']);
     spyOn(boardFactory, 'build').and.returnValue(board);
 
     game = new Game(boardFactory, playerFactory);
@@ -49,6 +49,19 @@ describe('Game', () => {
     it('adds move to moves array if valid', () => {
       game.move(5);
       expect(game.moves.length).toEqual(1);
+    });
+  });
+
+  describe('isWinningMove', () => {
+    it('returns true if move was winning move', () => {
+      player.showMoves.and.returnValue([3, 5, 7]);
+      board.checkWinningCombo.and.returnValue([[3, 5, 7]])
+      expect(game.isWinningMove()).toBe(true);
+    });
+    it('returns false if move was not winning move', () => {
+      player.showMoves.and.returnValue([3, 5, 7]);
+      board.checkWinningCombo.and.returnValue([[3, 6, 7]])
+      expect(game.isWinningMove()).toBeUndefined();
     });
   });
 });
