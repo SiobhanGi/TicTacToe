@@ -1,8 +1,10 @@
 describe('Board', () => {
   let board;
+  let boardFactory;
 
   beforeEach(() => {
-    board = new Board();
+    boardFactory = new BoardFactory();
+    board = boardFactory.build();
   });
 
   describe('template', () => {
