@@ -17,7 +17,7 @@ describe('Game', () => {
 
     game = new Game(boardFactory, playerFactory);
     board.grid.and.returnValue([1,2,3,4,5,6,7,8,9]);
-
+    board.checkWinningCombo.and.returnValue([[3, 5, 7]])
   });
 
   describe('constructor', () => {
@@ -39,6 +39,28 @@ describe('Game', () => {
       game.currentTurn = game.player.two;
       game.switchTurn();
       expect(game.currentTurn).toEqual(game.player.one);
+    });
+  });
+
+  describe('move', () => {
+    it('returns winning message if winning move', () => {
+      position = 7;
+      player.showMoves.and.returnValue([3, 5, 7]);
+      expect(game.move(position)).toEqual('Game over.');
+    });
+    it('return draw message if draw', () => {
+      board.size.and.returnValue(9);
+      player.showMoves.and.returnValue([1, 2, 6]);
+      game.moves = [1, 3, 2,
+                    4, 6, 5,
+                    7, 8];
+      position = 9;
+      expect(game.move(position)).toEqual('Game over. Draw.');
+    });
+    it('switches turn if not winning move or draw', () => {
+      player.showMoves.and.returnValue([1]);
+      position = 5;
+      expect(game.move(position)).toEqual(game.switchTurn());
     });
   });
 
@@ -68,12 +90,10 @@ describe('Game', () => {
   describe('isWinningMove', () => {
     it('returns true if move was winning move', () => {
       player.showMoves.and.returnValue([3, 5, 7]);
-      board.checkWinningCombo.and.returnValue([[3, 5, 7]])
       expect(game.isWinningMove()).toBe(true);
     });
     it('returns false if move was not winning move', () => {
-      player.showMoves.and.returnValue([3, 5, 7]);
-      board.checkWinningCombo.and.returnValue([[3, 6, 7]])
+      player.showMoves.and.returnValue([3, 5, 6]);
       expect(game.isWinningMove()).toBeUndefined();
     });
   });

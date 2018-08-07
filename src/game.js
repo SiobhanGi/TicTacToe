@@ -10,10 +10,21 @@ class Game {
   }
 
   switchTurn() {
-    if (!(this.currentTurn = this.player.two)) {
+    if ((this.currentTurn === this.player.one)) {
       this.currentTurn = this.player.two;
     } else {
       this.currentTurn = this.player.one;
+    }
+  }
+
+  move(position) {
+  this.checkMove(position)
+    if (this.isWinningMove()) {
+      return 'Game over.'
+    } else if (this.isDraw()) {
+      return 'Game over. Draw.'
+    } else {
+      this.switchTurn()
     }
   }
 
