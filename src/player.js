@@ -1,7 +1,7 @@
 class Player {
   constructor() {
     this._moves = [];
-    this.name;
+    this.name = '';
   }
 
   setName(name) {
@@ -9,7 +9,7 @@ class Player {
   }
 
   move(position) {
-    this._moves.push(position)
+    this._moves.push(position);
   }
 
   showMoves() {
@@ -19,6 +19,6 @@ class Player {
 
 function PlayerFactory() {
   return {
-    build: () => new Player()
+    build: () => new Player(),
   };
 }

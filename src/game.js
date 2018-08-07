@@ -3,7 +3,7 @@ class Game {
     this.board = board.build();
     this.player = {
       one: player.build(),
-      two: player.build()
+      two: player.build(),
     };
     this.currentTurn = this.player.one;
     this.moves = [];
@@ -24,19 +24,19 @@ class Game {
   }
 
   move(position) {
-  this.checkMove(position)
+    this.checkMove(position);
     if (this.isWinningMove()) {
-      return 'Game over.'
+      return 'Game over.';
     } else if (this.isDraw()) {
-      return 'Game over. Draw.'
+      return 'Game over. Draw.';
     } else {
-      this.switchTurn()
+      this.switchTurn();
     }
   }
 
   checkMove(position) {
     if (!(this.board.grid().includes(position))) {
-      throw new TypeError(`Move ${position} invalid.`)
+      throw new TypeError(`Move ${position} invalid.`);
     } else if (this.moves.includes(position)) {
       throw new TypeError(`Move ${position} taken.`);
     } else {
@@ -46,10 +46,10 @@ class Game {
   }
 
   isWinningMove() {
-    let moves = this.currentTurn.showMoves().sort();
-    let combo = this.board.checkWinningCombo();
+    const moves = this.currentTurn.showMoves().sort();
+    const combo = this.board.checkWinningCombo();
     for (let i = 0; i < combo.length; i++) {
-      if (JSON.stringify(moves) == JSON.stringify(combo[i])) {
+      if (JSON.stringify(moves) === JSON.stringify(combo[i])) {
         return true;
       }
     }
