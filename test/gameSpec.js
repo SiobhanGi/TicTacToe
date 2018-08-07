@@ -11,7 +11,7 @@ describe('Game', () => {
     spyOn(playerFactory, 'build').and.returnValue(player);
 
     boardFactory = new BoardFactory();
-    board = jasmine.createSpyObj('board', ['checkWinningCombo', 'size']);
+    board = jasmine.createSpyObj('board', ['checkWinningCombo', 'size', 'grid']);
     spyOn(boardFactory, 'build').and.returnValue(board);
 
     game = new Game(boardFactory, playerFactory);
@@ -43,11 +43,11 @@ describe('Game', () => {
     it('throws error if move is not valid', () => {
       game.moves = [5];
       expect(() => {
-        game.move(5);
+        game.checkMove(5);
       }).toThrowError(TypeError, `Move ${game.moves} taken.`);
     });
     it('adds move to moves array if valid', () => {
-      game.move(5);
+      game.checkMove(5);
       expect(game.moves.length).toEqual(1);
     });
   });
@@ -78,4 +78,14 @@ describe('Game', () => {
       expect(game.isDraw()).toBeUndefined();
     });
   });
+
+  describe('invalid move', () => {
+    it('throws error if move is invalid', () => {
+      board.grid.and.returnValue([1,2,3,4,5,6,7,8,9]);
+      let position = 'i';
+      expect(() => {
+        game.invalidMove(position);
+      }).toThrowError(TypeError, `Move ${position} invalid.`);
+    });
+  })
 });

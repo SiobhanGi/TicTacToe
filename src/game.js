@@ -17,7 +17,7 @@ class Game {
     }
   }
 
-  move(position) {
+  checkMove(position) {
     if (this.moves.includes(position)) {
       throw new TypeError(`Move ${position} taken.`)
     } else {
@@ -39,6 +39,12 @@ class Game {
   isDraw() {
     if (this.moves.length === this.board.size()) {
       return true;
+    }
+  }
+
+  invalidMove(position) {
+    if (!(this.board.grid().includes(position))) {
+      throw new TypeError(`Move ${position} invalid.`)
     }
   }
 
