@@ -20,4 +20,11 @@ describe('Player', () => {
       expect(player.showMoves()).toEqual(player._moves);
     });
   });
+
+  describe('setName', () => {
+    it('sets name of player', () => {
+      player.setName('1');
+      expect(player.name).toEqual('1')
+    })
+  })
 });
