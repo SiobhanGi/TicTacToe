@@ -10,7 +10,7 @@ class Game {
   }
 
   switchTurn() {
-    if (this.currentTurn = this.player.one) {
+    if (!(this.currentTurn = this.player.two)) {
       this.currentTurn = this.player.two;
     } else {
       this.currentTurn = this.player.one;
@@ -33,6 +33,12 @@ class Game {
       if (JSON.stringify(moves) == JSON.stringify(combo[i])) {
         return true;
       }
+    }
+  }
+
+  isDraw() {
+    if (this.moves.length === this.board.size()) {
+      return true;
     }
   }
 

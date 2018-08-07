@@ -11,7 +11,7 @@ describe('Game', () => {
     spyOn(playerFactory, 'build').and.returnValue(player);
 
     boardFactory = new BoardFactory();
-    board = jasmine.createSpyObj('board', ['checkWinningCombo']);
+    board = jasmine.createSpyObj('board', ['checkWinningCombo', 'size']);
     spyOn(boardFactory, 'build').and.returnValue(board);
 
     game = new Game(boardFactory, playerFactory);
@@ -62,6 +62,20 @@ describe('Game', () => {
       player.showMoves.and.returnValue([3, 5, 7]);
       board.checkWinningCombo.and.returnValue([[3, 6, 7]])
       expect(game.isWinningMove()).toBeUndefined();
+    });
+  });
+
+  describe('isDraw', () => {
+    it('returns true if game is draw', () => {
+      game.moves = [1, 2, 3,
+                    4, 5, 6,
+                    7, 8, 9];
+      board.size.and.returnValue(9)
+      expect(game.isDraw()).toBe(true);
+    });
+    it('returns undefined if not a draw', () => {
+      board.size.and.returnValue(9)
+      expect(game.isDraw()).toBeUndefined();
     });
   });
 });
