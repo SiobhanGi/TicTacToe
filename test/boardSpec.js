@@ -12,4 +12,10 @@ describe('Board', () => {
       expect(board.checkWinningCombo()).toEqual(board._winningCombo);
     });
   });
+
+  describe('size', () => {
+    it('should return size of board', () => {
+      expect(board.size()).toEqual(board._grid.length);
+    });
+  });
 });

@@ -1,9 +1,9 @@
 class Board {
   constructor() {
-    this._template =
-      [[1, 2, 3],
-      [4, 5, 6],
-      [7, 8, 9]];
+    this._grid =
+      [1, 2, 3,
+       4, 5, 6,
+       7, 8, 9];
 
     this._winningCombo =
       [[1, 2, 3],
@@ -18,7 +18,11 @@ class Board {
 
   checkWinningCombo() {
     return this._winningCombo;
-  }
+  };
+
+  size() {
+    return this._grid.length;
+  };
 }
 
 function BoardFactory() {
