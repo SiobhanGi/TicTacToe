@@ -4,6 +4,7 @@ describe('Game', () => {
   let boardFactory;
   let board;
   let game;
+  let position;
 
   beforeEach(() => {
     playerFactory = new PlayerFactory();
@@ -15,6 +16,8 @@ describe('Game', () => {
     spyOn(boardFactory, 'build').and.returnValue(board);
 
     game = new Game(boardFactory, playerFactory);
+    board.grid.and.returnValue([1,2,3,4,5,6,7,8,9]);
+
   });
 
   describe('constructor', () => {
@@ -39,15 +42,25 @@ describe('Game', () => {
     });
   });
 
-  describe('move', () => {
-    it('throws error if move is not valid', () => {
-      game.moves = [5];
+  describe('checkMove', () => {
+    it('throws error if move is invalid', () => {
+      position = 'i';
       expect(() => {
-        game.checkMove(5);
-      }).toThrowError(TypeError, `Move ${game.moves} taken.`);
+        game.checkMove(position);
+      }).toThrowError(TypeError, `Move ${position} invalid.`);
     });
+
+    it('throws error if move already taken', () => {
+      game.moves = [5];
+      position = 5;
+      expect(() => {
+        game.checkMove(position);
+      }).toThrowError(TypeError, `Move ${position} taken.`);
+    });
+
     it('adds move to moves array if valid', () => {
-      game.checkMove(5);
+      position = 5;
+      game.checkMove(position);
       expect(game.moves.length).toEqual(1);
     });
   });
@@ -78,14 +91,4 @@ describe('Game', () => {
       expect(game.isDraw()).toBeUndefined();
     });
   });
-
-  describe('invalid move', () => {
-    it('throws error if move is invalid', () => {
-      board.grid.and.returnValue([1,2,3,4,5,6,7,8,9]);
-      let position = 'i';
-      expect(() => {
-        game.invalidMove(position);
-      }).toThrowError(TypeError, `Move ${position} invalid.`);
-    });
-  })
 });

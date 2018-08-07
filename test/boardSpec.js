@@ -18,4 +18,10 @@ describe('Board', () => {
       expect(board.size()).toEqual(board._grid.length);
     });
   });
+
+  describe('grid', () => {
+    it('should return grid', () => {
+      expect(board.grid()).toEqual(board._grid);
+    });
+  });
 });

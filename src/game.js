@@ -18,8 +18,10 @@ class Game {
   }
 
   checkMove(position) {
-    if (this.moves.includes(position)) {
-      throw new TypeError(`Move ${position} taken.`)
+    if (!(this.board.grid().includes(position))) {
+      throw new TypeError(`Move ${position} invalid.`)
+    } else if (this.moves.includes(position)) {
+      throw new TypeError(`Move ${position} taken.`);
     } else {
       this.moves.push(position);
       this.currentTurn.move(position);
@@ -41,11 +43,4 @@ class Game {
       return true;
     }
   }
-
-  invalidMove(position) {
-    if (!(this.board.grid().includes(position))) {
-      throw new TypeError(`Move ${position} invalid.`)
-    }
-  }
-
 }

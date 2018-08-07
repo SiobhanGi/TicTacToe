@@ -23,6 +23,10 @@ class Board {
   size() {
     return this._grid.length;
   };
+
+  grid() {
+    return this._grid;
+  };
 }
 
 function BoardFactory() {
