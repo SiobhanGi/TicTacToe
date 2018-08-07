@@ -8,7 +8,7 @@ describe('Game', () => {
 
   beforeEach(() => {
     playerFactory = new PlayerFactory();
-    player = jasmine.createSpyObj('player', ['move', 'showMoves']);
+    player = jasmine.createSpyObj('player', ['move', 'showMoves', 'setName']);
     spyOn(playerFactory, 'build').and.returnValue(player);
 
     boardFactory = new BoardFactory();

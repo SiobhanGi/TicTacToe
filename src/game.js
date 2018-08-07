@@ -7,6 +7,12 @@ class Game {
     };
     this.currentTurn = this.player.one;
     this.moves = [];
+    this.names = this._names();
+  }
+
+  _names() {
+    this.player.one.setName('1');
+    this.player.two.setName('2');
   }
 
   switchTurn() {
