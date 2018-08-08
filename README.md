@@ -62,7 +62,10 @@ game.move(position_to_move_to)
 ```
 <br>
 ## Tests
+<<<<<<< HEAD
 
+=======
+>>>>>>> bbc87554f00500b7499de61487aabcab53952ec2
 ##### To run tests in command line
 
 ```
