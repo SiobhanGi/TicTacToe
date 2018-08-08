@@ -22,27 +22,29 @@ This app was completely TDD.
 * Jasmine-node and Karma
 * Karma for code coverage
 * Eslint
-
 <br>
+
 ## Getting started
 
 ```javascript
 git clone
 ```
 <br>
+
 ### Interaction
 
 To start, copy path of index.html and paste the URL in to your browser.
 
 Open console via google developer tools and use the following commands to interact with the app.
 
-### The board
+#### The board
 
 1  | 2 | 3
 ---|---|---
 4  | 5 | 6
 7  | 8 | 9
 <br>
+
 ### Commands
 
 ##### New game
@@ -60,11 +62,8 @@ Player 1 starts first, will switch to player 2 if player 1's move is legal.
 game.move(position_to_move_to)
 ```
 <br>
-## Tests
-<<<<<<< HEAD
 
-=======
->>>>>>> bbc87554f00500b7499de61487aabcab53952ec2
+## Tests
 ##### To run tests in command line
 
 ```
