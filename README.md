@@ -2,7 +2,6 @@
 
 A command line app that simulates a game of 3x3 2 player Tic Tac Toe. Written to practice JS ES6, TDD, code optimisation and code quality( including SRP and encapsulation).
 
-<br>
 ## My approach
 
 Initially created the user stories for the application, then using that data constructed a diagram which showed the classes, functions and states.
